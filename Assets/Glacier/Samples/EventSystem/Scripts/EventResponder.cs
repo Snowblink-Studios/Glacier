@@ -1,7 +1,7 @@
 #if GLACIER_UNITY
 using UnityEngine;
 
-namespace Glacier.Sample.EventSystem {
+namespace Glacier.Samples.EventSystem {
     public class EventResponder : MonoBehaviour {
 
         public void DisplayText(string text) {
