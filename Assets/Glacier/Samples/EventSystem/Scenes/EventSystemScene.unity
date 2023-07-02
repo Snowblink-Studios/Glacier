@@ -234,9 +234,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 535329057}
-  - component: {fileID: 535329060}
-  - component: {fileID: 535329061}
   - component: {fileID: 535329059}
+  - component: {fileID: 535329060}
   - component: {fileID: 535329062}
   m_Layer: 0
   m_Name: EventResponder
@@ -298,34 +297,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Trigger Event Clicked (NO PARAM)
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &535329061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535329056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60aef99a9fa59245afbbb7e05d27692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventChannel: {fileID: 11400000, guid: 8479933e512b2814d818e6f59a9f47e1, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 535329059}
-        m_TargetAssemblyTypeName: Glacier.Sample.EventSystem.EventResponder, Assembly-CSharp
-        m_MethodName: DisplayInt
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &535329062

@@ -13,13 +13,19 @@ namespace Glacier.Core.Events {
             }
         }
 
-        protected void AddListener<L>(L listener, List<L> list) {
+        protected void AddListener<L>(L listener, List<L> list) where L : MonoBehaviour {
+            if (list == null) {
+                Debug.LogError("Possible incorrect event channel on " + listener.name);
+            }
             if (listener != null && !list.Contains(listener)) {
                 list.Add(listener);
             }
         }
 
-        protected void RemoveListener<L>(L listener, List<L> list) {
+        protected void RemoveListener<L>(L listener, List<L> list) where L : MonoBehaviour {
+            if (list == null) {
+                Debug.LogError("Possible incorrect event channel on " + listener.name);
+            }
             if (listener != null && list.Contains(listener)) {
                 list.Remove(listener);
             }
