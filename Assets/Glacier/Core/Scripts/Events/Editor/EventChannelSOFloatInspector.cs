@@ -1,4 +1,4 @@
-#if GLACIER_UNITY
+#if GLACIER_UNITY && UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
