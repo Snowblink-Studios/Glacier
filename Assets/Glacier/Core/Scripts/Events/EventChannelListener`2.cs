@@ -10,7 +10,7 @@ namespace Glacier.Core.Events {
         [SerializeField]
         private UnityEvent<T1, T2> onEventRaised = new();
 
-        public void OnEventRaised(T1 param1, T2 param2) => onEventRaised?.Invoke(param1, param2);
+        public virtual void OnEventRaised(T1 param1, T2 param2) => onEventRaised?.Invoke(param1, param2);
         public void SetEventChannel(EventChannelSO<T1, T2> eventChannel) => this.eventChannel = eventChannel;
         public void AddUnityEventListener(UnityAction<T1, T2> listener) => onEventRaised.AddListener(listener);
 

@@ -9,7 +9,7 @@ namespace Glacier.Core.Events {
         public void AddListener(EventChannelListener<T1, T2> listener) => AddListener(listener, _listenersT2);
         public void RemoveListener(EventChannelListener<T1, T2> listener) => RemoveListener(listener, _listenersT2);
 
-        public void Raise(T1 param1, T2 param2) {
+        public virtual void Raise(T1 param1, T2 param2) {
             Raise(_listenersT2, (l) => l.OnEventRaised(param1, param2));
         }
     }
