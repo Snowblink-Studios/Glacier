@@ -1,3 +1,4 @@
+#if GLACIER_UNITY
 using UnityEngine;
 
 namespace Glacier.Samples.JetpackJones {
@@ -32,3 +33,4 @@ namespace Glacier.Samples.JetpackJones {
         }
     }
 }
+#endif

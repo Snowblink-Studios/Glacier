@@ -1,3 +1,4 @@
+#if GLACIER_UNITY
 using UnityEngine;
 
 namespace Glacier.Samples.JetpackJones {
@@ -19,3 +20,4 @@ namespace Glacier.Samples.JetpackJones {
         public Jetpack InstantiatePrefab() => Instantiate(jetpackPrefab, null, false);
     }
 }
+#endif
