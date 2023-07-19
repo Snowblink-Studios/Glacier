@@ -1,3 +1,4 @@
+#if GLACIER_UNITY
 using UnityEngine;
 using TMPro;
 using Glacier.Core;
@@ -14,3 +15,4 @@ namespace Glacier.Samples.HealthComponent {
         }
     }
 }
+#endif

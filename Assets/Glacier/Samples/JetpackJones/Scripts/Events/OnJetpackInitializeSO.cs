@@ -1,3 +1,4 @@
+#if GLACIER_UNITY
 using UnityEngine;
 using Glacier.Core.Events;
 
@@ -6,3 +7,4 @@ namespace Glacier.Samples.JetpackJones.Events {
     public class OnJetpackInitializeSO : EventChannelSO<JetpackSO> {
     }
 }
+#endif

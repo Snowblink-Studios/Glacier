@@ -1,3 +1,4 @@
+#if GLACIER_UNITY
 using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
@@ -86,3 +87,4 @@ namespace Glacier.Game.Tests {
         }
     }
 }
+#endif
