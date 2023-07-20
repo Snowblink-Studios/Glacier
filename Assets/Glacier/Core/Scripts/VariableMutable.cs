@@ -1,10 +1,10 @@
 #if GLACIER_UNITY
 using UnityEngine;
 
-namespace Glacier.Core {
-    public class VariableMutable<T> : Variable<T> {
+namespace Glacier.Core.Variables {
+    public class VariableMutable<T> : RuntimeVariable<T> {
 
-        public override T Value { get => _value; set => _value = value; }
+        //public override T Value { get => _value; set => _value = value; }
 
         protected T _value = default(T);
 

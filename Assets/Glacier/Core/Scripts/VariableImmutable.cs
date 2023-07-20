@@ -1,15 +1,15 @@
 #if GLACIER_UNITY
 using UnityEngine;
 
-namespace Glacier.Core {
-    public class VariableImmutable<T> : Variable<T> {
+namespace Glacier.Core.Variables {
+    public class VariableImmutable<T> : RuntimeVariable<T> {
 
-        public override T Value {
+        /*public override T Value {
             get => value;
             set {
                 Debug.LogError("Can't modify immutable variable.");
             }
-        }
+        }*/
     }
 }
 #endif

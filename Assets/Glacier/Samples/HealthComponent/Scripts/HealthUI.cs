@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using Glacier.Core;
+using Glacier.Core.Variables;
 
 namespace Glacier.Samples.HealthComponent {
     public class HealthUI : MonoBehaviour {

@@ -2,14 +2,14 @@
 using System;
 using UnityEngine;
 
-namespace Glacier.Core {
+namespace Glacier.Core.Variables {
     [Serializable]
     public class VariableReference {
 
         [SerializeField]
         private bool isConstant = false;
         [SerializeField]
-        private Variable<int> variable;
+        private RuntimeVariable<int> variable;
         [SerializeField]
         private int constantValue;
 

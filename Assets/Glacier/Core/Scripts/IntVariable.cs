@@ -1,7 +1,7 @@
 #if GLACIER_UNITY
 using UnityEngine;
 
-namespace Glacier.Core {
+namespace Glacier.Core.Variables {
     [CreateAssetMenu(fileName="IntVariable", menuName="Glacier/Core/Variables/IntVariable")]
     public class IntVariable : VariableMutable<int> {
 
