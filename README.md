@@ -16,18 +16,22 @@ A collection of tools and utilities commonly used for game development in Unity.
 <br /><br />
 
 ## How to use
-Download the latest UnityPackage [here](https://github.com/Snowblink-Studios/Glacier/wiki/Releases?target=_blank).
+## Install using Unity Package Manager
+- `Window` > `Package Manager` > `+` > `Add package from git URL`
+- Type in `ssh://git@github.com/Snowblink-Studios/Glacier.git?path=/Assets/Package#master` then click `Add`
+- Add `GLACIER_UNITY` to `Project Settings` > `Player` > `Other Settings` > `Scripting Define Symbols`
+## Update the package from the client project
+- Open `packages-lock.json`
+- Delete the Json object `"io.snowblink.glacier"`
+- `Window` > `Package Manager` > `Refresh Icon` > `Manual Resolve`
+
+
 
 ---
 <br /><br />
 
 ## Namespaces
 
----
-<br /><br />
-
-## Preprocessors
-- GLACIER_UNITY
 
 ---
 <br /><br />
