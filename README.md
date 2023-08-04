@@ -18,7 +18,7 @@ A collection of tools and utilities commonly used for game development in Unity.
 ## How to use
 ## Install using Unity Package Manager
 - `Window` > `Package Manager` > `+` > `Add package from git URL`
-- Type in `ssh://git@github.com/Snowblink-Studios/Glacier.git?path=/Assets/Package#master` then click `Add`
+- Type in `ssh://git@github.com/Snowblink-Studios/Glacier.git?path=/Assets/Glacier#master` then click `Add`
 - Add `GLACIER_UNITY` to `Project Settings` > `Player` > `Other Settings` > `Scripting Define Symbols`
 ## Update the package from the client project
 - Open `packages-lock.json`
