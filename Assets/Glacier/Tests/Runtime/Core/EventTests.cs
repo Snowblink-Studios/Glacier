@@ -1,4 +1,3 @@
-#if GLACIER_UNITY
 using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
@@ -166,4 +165,3 @@ namespace Glacier.Core.Tests {
         }
     }
 }
-#endif

@@ -764,7 +764,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: GLACIER_UNITY
+    Standalone: GLACIER_UNITY;GLACIER_UNITY_TESTS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

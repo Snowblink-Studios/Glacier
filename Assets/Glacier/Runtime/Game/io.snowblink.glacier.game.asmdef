@@ -1,6 +1,6 @@
 {
-    "name": "Core",
-    "rootNamespace": "Glacier.Core",
+    "name": "io.snowblink.glacier.game",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -8,7 +8,9 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "GLACIER_UNITY"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }

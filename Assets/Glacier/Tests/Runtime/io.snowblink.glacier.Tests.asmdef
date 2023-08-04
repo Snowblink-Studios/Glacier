@@ -1,10 +1,11 @@
 {
-    "name": "Game_PlayMode",
+    "name": "io.snowblink.glacier.Tests",
     "rootNamespace": "",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "Game"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:3b737bac85683d746a98f7b157bec03e",
+        "GUID:ee27aebda35d4ce4e8e2566d0944e8a3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -15,7 +16,8 @@
     ],
     "autoReferenced": false,
     "defineConstraints": [
-        "UNITY_INCLUDE_TESTS"
+        "UNITY_INCLUDE_TESTS",
+        "GLACIER_UNITY_TESTS"
     ],
     "versionDefines": [],
     "noEngineReferences": false
