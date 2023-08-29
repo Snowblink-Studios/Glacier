@@ -1,4 +1,3 @@
-#if GLACIER_UNITY
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,4 +31,3 @@ namespace Glacier.Core.Events {
         }
     }
 }
-#endif

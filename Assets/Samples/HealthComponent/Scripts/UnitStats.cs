@@ -1,15 +1,13 @@
 #if GLACIER_UNITY
 using UnityEngine;
 using TMPro;
-using Glacier.Core;
 using Glacier.Game;
-using Glacier.Core.Variables;
 
 namespace Glacier.Samples.HealthComponent {
     public class UnitStats : MonoBehaviour {
 
         [SerializeField]
-        private VariableReference maxHealth;
+        private int maxHealth;
         [SerializeField]
         private Health health;
         [SerializeField]
@@ -20,7 +18,7 @@ namespace Glacier.Samples.HealthComponent {
         public Health Health => health;
 
         public void ModifyVar() {
-            maxHealth.Variable = 220;
+            maxHealth = 220;
         }
 
         public void TakeDamage(int amount) {
