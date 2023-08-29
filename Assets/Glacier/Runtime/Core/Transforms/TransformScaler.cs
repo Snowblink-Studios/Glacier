@@ -34,7 +34,7 @@ namespace Glacier.Core.Transforms {
         private Ease easeType = Ease.Linear;
 
         [SerializeField]
-        private UnityEvent onFinished;
+        private UnityEvent onFinished = new UnityEvent();
 
         public UnityEvent OnFinished => onFinished;
 
@@ -43,33 +43,37 @@ namespace Glacier.Core.Transforms {
         private bool _isRunning = false;
         private Tween _tween;
 
+        public void SetDuration(float duration) {
+            this.duration = duration;
+        }
+
+        public void SetEaseType(Ease easeType) {
+            this.easeType = easeType;
+        }
+
         public void Stop() {
             StopAllCoroutines();
             _tween?.Kill();
-        }
-
-        public void Scale() {
-            if (!enabled) {
-                return;
-            }
-            if (specifyInitialScale) {
-                _targetObject.localScale = initialScale;
-            }
-            Scale(null);
         }
 
         public void Scale(float from, float to) {
             if (!enabled) {
                 return;
             }
+            CheckTargetObject();
 
             _targetObject.localScale = Vector3.one * from;
             StartCoroutine(DoScale(_targetObject, Vector3.one * to, duration));
         }
 
-        public void Scale(Action onFinished) {
+        public void Scale() {
             if (!enabled) {
                 return;
+            }
+            CheckTargetObject();
+
+            if (specifyInitialScale) {
+                _targetObject.localScale = initialScale;
             }
 
             if (specifyTargetScale) {
@@ -99,12 +103,20 @@ namespace Glacier.Core.Transforms {
             }
 
             if (_isRunning) {
+                CheckTargetObject();
+
                 _targetObject.localScale += scaleStep * Mathf.Min(Time.deltaTime, 1f / 30f);
                 _time = Mathf.Max(_time - Time.deltaTime, 0f);
                 if (_time.Equals(0f)) {
                     _isRunning = false;
                     onFinished?.Invoke();
                 }
+            }
+        }
+
+        private void CheckTargetObject() {
+            if (_targetObject == null) {
+                _targetObject = targetSelf ? transform : targetObject;
             }
         }
 
