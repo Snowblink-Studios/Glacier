@@ -1,8 +1,8 @@
 using UnityEditor;
 
 namespace Glacier.Core.Transforms {
-    [CustomEditor(typeof(TransformScaler))]
-    public class TransformScalerEditor : Editor {
+    [CustomEditor(typeof(TransformRotator))]
+    public class TransformRotatorEditor : Editor {
 
         public override void OnInspectorGUI() {
 
@@ -16,21 +16,21 @@ namespace Glacier.Core.Transforms {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
             }
 
-            var specifyInitialScaleProp = serializedObject.FindProperty("specifyInitialScale");
-            EditorGUILayout.PropertyField(specifyInitialScaleProp);
+            var specifyInitialRotationProp = serializedObject.FindProperty("specifyInitialRotation");
+            EditorGUILayout.PropertyField(specifyInitialRotationProp);
 
-            if (specifyInitialScaleProp.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("initialScale"));
+            if (specifyInitialRotationProp.boolValue) {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("initialRotation"));
             }
 
-            var specifyTargetScaleProb = serializedObject.FindProperty("specifyTargetScale");
-            EditorGUILayout.PropertyField(specifyTargetScaleProb);
+            var specifyTargetRotationProb = serializedObject.FindProperty("specifyTargetRotation");
+            EditorGUILayout.PropertyField(specifyTargetRotationProb);
 
-            if (specifyTargetScaleProb.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("targetScale"));
+            if (specifyTargetRotationProb.boolValue) {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("targetRotation"));
             }
             else {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleStep"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("rotationStep"));
             }
 
             var targetSelfProp = serializedObject.FindProperty("targetSelf");

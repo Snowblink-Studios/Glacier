@@ -5,22 +5,22 @@ using UnityEngine.Events;
 using DG.Tweening;
 
 namespace Glacier.Core.Transforms {
-    public class TransformScaler : MonoBehaviour {
+    public class TransformRotator : MonoBehaviour {
 
         [SerializeField]
         private bool runOnStartup;
 
         [SerializeField]
-        private bool specifyInitialScale = false;
+        private bool specifyInitialRotation = false;
         [SerializeField]
-        private Vector3 initialScale;
+        private Vector3 initialRotation;
 
         [SerializeField]
-        private bool specifyTargetScale = true;
+        private bool specifyTargetRotation = true;
         [SerializeField]
-        private Vector3 targetScale;
+        private Vector3 targetRotation;
         [SerializeField]
-        private Vector3 scaleStep;
+        private Vector3 rotationStep;
 
         [SerializeField]
         private bool fixedDuration = false;
@@ -79,12 +79,12 @@ namespace Glacier.Core.Transforms {
             }
             CheckTargetObject();
 
-            if (specifyInitialScale) {
-                _targetObject.localScale = initialScale;
+            if (specifyInitialRotation) {
+                _targetObject.localScale = initialRotation;
             }
 
-            if (specifyTargetScale) {
-                StartCoroutine(DoScale(_targetObject, targetScale, duration));
+            if (specifyTargetRotation) {
+                StartCoroutine(DoScale(_targetObject, targetRotation, duration));
             }
             else {
                 _isRunning = true;
@@ -112,7 +112,7 @@ namespace Glacier.Core.Transforms {
             if (_isRunning) {
                 CheckTargetObject();
 
-                _targetObject.localScale += scaleStep * Mathf.Min(Time.deltaTime, 1f / 30f);
+                _targetObject.rotation = Quaternion.Euler(_targetObject.rotation.eulerAngles + (rotationStep * Mathf.Min(Time.deltaTime, 1f / 30f)));
                 _time = Mathf.Max(_time - Time.deltaTime, 0f);
                 if (_time.Equals(0f)) {
                     _isRunning = false;
