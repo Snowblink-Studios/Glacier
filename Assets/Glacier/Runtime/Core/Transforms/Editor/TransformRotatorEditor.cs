@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEditor;
 
 namespace Glacier.Core.Transforms {
@@ -6,7 +7,12 @@ namespace Glacier.Core.Transforms {
 
         public override void OnInspectorGUI() {
 
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.ObjectField("Script", MonoScript.FromMonoBehaviour((MonoBehaviour)target), typeof(MonoBehaviour), false);
+            EditorGUI.EndDisabledGroup();
+
             EditorGUILayout.PropertyField(serializedObject.FindProperty("runOnStartup"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("applyOnLocalSpace"));
 
             var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
             EditorGUILayout.PropertyField(fixedDurationProp);

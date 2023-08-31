@@ -233,11 +233,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnStartup: 1
-  specifyInitialRotation: 0
-  initialRotation: {x: 0, y: 0, z: 0}
+  applyOnLocalSpace: 0
+  specifyInitialRotation: 1
+  initialRotation: {x: 0, y: 0, z: 45}
   specifyTargetRotation: 0
-  targetRotation: {x: 0, y: 0, z: 0}
-  rotationStep: {x: 0, y: 45, z: 360}
+  targetRotation: {x: 90, y: 0, z: 0}
+  rotationStep: {x: 0, y: 0, z: 360}
   fixedDuration: 0
   duration: 5
   easeType: 1

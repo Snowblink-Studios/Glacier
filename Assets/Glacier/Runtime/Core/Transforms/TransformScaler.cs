@@ -59,6 +59,7 @@ namespace Glacier.Core.Transforms {
         }
 
         public void Stop() {
+            _isRunning = false;
             StopAllCoroutines();
             _tween?.Kill();
         }
@@ -113,10 +114,13 @@ namespace Glacier.Core.Transforms {
                 CheckTargetObject();
 
                 _targetObject.localScale += scaleStep * Mathf.Min(Time.deltaTime, 1f / 30f);
-                _time = Mathf.Max(_time - Time.deltaTime, 0f);
-                if (_time.Equals(0f)) {
-                    _isRunning = false;
-                    onFinished?.Invoke();
+
+                if (fixedDuration) {
+                    _time = Mathf.Max(_time - Time.deltaTime, 0f);
+                    if (_time.Equals(0f)) {
+                        _isRunning = false;
+                        onFinished?.Invoke();
+                    }
                 }
             }
         }
