@@ -1,26 +1,27 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 
 namespace Glacier.Core.Transforms {
-    public class TransformScaler : MonoBehaviour {
+    public class TransformRotator : MonoBehaviour {
 
         [SerializeField]
         private bool runOnStartup;
+        [SerializeField]
+        private bool applyOnLocalSpace = false;
 
         [SerializeField]
-        private bool specifyInitialScale = false;
+        private bool specifyInitialRotation = false;
         [SerializeField]
-        private Vector3 initialScale;
+        private Vector3 initialRotation;
 
         [SerializeField]
-        private bool specifyTargetScale = true;
+        private bool specifyTargetRotation = true;
         [SerializeField]
-        private Vector3 targetScale;
+        private Vector3 targetRotation;
         [SerializeField]
-        private Vector3 scaleStep;
+        private Vector3 rotationStep;
 
         [SerializeField]
         private bool fixedDuration = false;
@@ -40,6 +41,7 @@ namespace Glacier.Core.Transforms {
         public UnityEvent OnFinished => onFinished;
 
         private Transform _targetObject;
+        private Vector3 _rotation;
         private float _time;
         private bool _isRunning = false;
         private Tween _tween;
@@ -64,28 +66,39 @@ namespace Glacier.Core.Transforms {
             _tween?.Kill();
         }
 
-        public void Scale(float from, float to) {
+        public void Rotate(Vector3 from, Vector3 to) {
             if (!enabled) {
                 return;
             }
             CheckTargetObject();
 
-            _targetObject.localScale = Vector3.one * from;
-            StartCoroutine(DoScale(_targetObject, Vector3.one * to, duration));
+            if (applyOnLocalSpace) {
+                _targetObject.localRotation = Quaternion.Euler(from);
+            }
+            else {
+                _targetObject.rotation = Quaternion.Euler(from);
+            }
+            StartCoroutine(DoRotate(_targetObject, to, duration));
         }
 
-        public void Scale() {
+        public void Rotate() {
             if (!enabled) {
                 return;
             }
             CheckTargetObject();
 
-            if (specifyInitialScale) {
-                _targetObject.localScale = initialScale;
+            if (specifyInitialRotation) {
+                _rotation = initialRotation;
+                if (applyOnLocalSpace) {
+                    _targetObject.localRotation = Quaternion.Euler(_rotation);
+                }
+                else {
+                    _targetObject.rotation = Quaternion.Euler(_rotation);
+                }
             }
 
-            if (fixedDuration && specifyTargetScale) {
-                StartCoroutine(DoScale(_targetObject, targetScale, duration));
+            if (fixedDuration && specifyTargetRotation) {
+                StartCoroutine(DoRotate(_targetObject, targetRotation, duration));
             }
             else {
                 _isRunning = true;
@@ -99,9 +112,10 @@ namespace Glacier.Core.Transforms {
             }
 
             _targetObject = targetSelf ? transform : targetObject;
+            _rotation = _targetObject.rotation.eulerAngles;
 
             if (runOnStartup) {
-                Scale();
+                Rotate();
             }
         }
 
@@ -113,7 +127,15 @@ namespace Glacier.Core.Transforms {
             if (_isRunning) {
                 CheckTargetObject();
 
-                _targetObject.localScale += scaleStep * Mathf.Min(Time.deltaTime, 1f / 30f);
+                _rotation += (rotationStep * Mathf.Min(Time.deltaTime, 1f / 30f));
+                if (applyOnLocalSpace) {
+                    _targetObject.localRotation = Quaternion.Euler(_rotation);
+                }
+                else {
+                    _targetObject.rotation = Quaternion.Euler(_rotation);
+                }
+
+                _rotation = ClampTo360(_rotation);
 
                 if (fixedDuration) {
                     _time = Mathf.Max(_time - Time.deltaTime, 0f);
@@ -131,10 +153,25 @@ namespace Glacier.Core.Transforms {
             }
         }
 
-        private IEnumerator DoScale(Transform transform, Vector3 scale, float duration) {
-            _tween = transform.DOScale(scale, duration).SetEase(easeType);
+        private IEnumerator DoRotate(Transform transform, Vector3 rotation, float duration) {
+            if (applyOnLocalSpace) {
+                _tween = transform.DOLocalRotate(rotation, duration).SetEase(easeType);
+            }
+            else {
+                _tween = transform.DORotate(rotation, duration).SetEase(easeType);
+            }
             yield return new WaitForSeconds(duration);
             onFinished?.Invoke();
+        }
+
+        private Vector3 ClampTo360(Vector3 toBeClamped) {
+            while (toBeClamped.x > 360f) { toBeClamped.x -= 360f; }
+            while (toBeClamped.x < 0f) { toBeClamped.x += 360f; }
+            while (toBeClamped.y > 360f) { toBeClamped.y -= 360f; }
+            while (toBeClamped.y < 0f) { toBeClamped.y += 360f; }
+            while (toBeClamped.z > 360f) { toBeClamped.z -= 360f; }
+            while (toBeClamped.z < 0f) { toBeClamped.z += 360f; }
+            return toBeClamped;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Glacier.Core.Tests {
         public IEnumerator Scaling() {
             var g = new GameObject("Scaler");
             var scaler = g.AddComponent<TransformScaler>();
-            scaler.SetDuration(2f);
+            scaler.SetFixedDuration(2f);
 
             var hasReturned = false;
             var returnedScale = Vector3.zero;

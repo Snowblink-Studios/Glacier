@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEditor;
 
 namespace Glacier.Core.Transforms {
-    [CustomEditor(typeof(TransformScaler))]
-    public class TransformScalerEditor : Editor {
+    [CustomEditor(typeof(TransformRotator))]
+    public class TransformRotatorEditor : Editor {
 
         public override void OnInspectorGUI() {
 
@@ -12,12 +12,13 @@ namespace Glacier.Core.Transforms {
             EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("runOnStartup"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("applyOnLocalSpace"));
 
-            var specifyInitialScaleProp = serializedObject.FindProperty("specifyInitialScale");
-            EditorGUILayout.PropertyField(specifyInitialScaleProp);
+            var specifyInitialRotationProp = serializedObject.FindProperty("specifyInitialRotation");
+            EditorGUILayout.PropertyField(specifyInitialRotationProp);
 
-            if (specifyInitialScaleProp.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("initialScale"));
+            if (specifyInitialRotationProp.boolValue) {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("initialRotation"));
             }
 
             var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
@@ -27,18 +28,18 @@ namespace Glacier.Core.Transforms {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
 
-                var specifyTargetScaleProp = serializedObject.FindProperty("specifyTargetScale");
-                EditorGUILayout.PropertyField(specifyTargetScaleProp);
+                var specifyTargetRotationProb = serializedObject.FindProperty("specifyTargetRotation");
+                EditorGUILayout.PropertyField(specifyTargetRotationProb);
 
-                if (specifyTargetScaleProp.boolValue) {
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("targetScale"));
+                if (specifyTargetRotationProb.boolValue) {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("targetRotation"));
                 }
                 else {
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleStep"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("rotationStep"));
                 }
             }
             else {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleStep"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("rotationStep"));
             }
 
             var targetSelfProp = serializedObject.FindProperty("targetSelf");

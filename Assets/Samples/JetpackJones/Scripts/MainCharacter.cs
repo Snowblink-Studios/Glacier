@@ -15,6 +15,7 @@ namespace Glacier.Samples.JetpackJones {
             _jetpack = jetpackSettings.InstantiatePrefab();
             _jetpack.transform.SetParent(jetpackRoot);
             _jetpack.transform.localPosition = Vector3.zero;
+            _jetpack.transform.localRotation = Quaternion.identity;
             _jetpack.Initialize(jetpackSettings, rigidbody);
         }
     }
