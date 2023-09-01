@@ -13,14 +13,6 @@ namespace Glacier.Core.Transforms {
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("runOnStartup"));
 
-            var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
-            EditorGUILayout.PropertyField(fixedDurationProp);
-
-            if (fixedDurationProp.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
-            }
-
             var specifyInitialScaleProp = serializedObject.FindProperty("specifyInitialScale");
             EditorGUILayout.PropertyField(specifyInitialScaleProp);
 
@@ -28,11 +20,22 @@ namespace Glacier.Core.Transforms {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("initialScale"));
             }
 
-            var specifyTargetScaleProb = serializedObject.FindProperty("specifyTargetScale");
-            EditorGUILayout.PropertyField(specifyTargetScaleProb);
+            var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
+            EditorGUILayout.PropertyField(fixedDurationProp);
 
-            if (specifyTargetScaleProb.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("targetScale"));
+            if (fixedDurationProp.boolValue) {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
+
+                var specifyTargetScaleProp = serializedObject.FindProperty("specifyTargetScale");
+                EditorGUILayout.PropertyField(specifyTargetScaleProp);
+
+                if (specifyTargetScaleProp.boolValue) {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("targetScale"));
+                }
+                else {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleStep"));
+                }
             }
             else {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleStep"));

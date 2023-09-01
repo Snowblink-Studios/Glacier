@@ -14,14 +14,6 @@ namespace Glacier.Core.Transforms {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("runOnStartup"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("applyOnLocalSpace"));
 
-            var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
-            EditorGUILayout.PropertyField(fixedDurationProp);
-
-            if (fixedDurationProp.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
-            }
-
             var specifyInitialRotationProp = serializedObject.FindProperty("specifyInitialRotation");
             EditorGUILayout.PropertyField(specifyInitialRotationProp);
 
@@ -29,11 +21,22 @@ namespace Glacier.Core.Transforms {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("initialRotation"));
             }
 
-            var specifyTargetRotationProb = serializedObject.FindProperty("specifyTargetRotation");
-            EditorGUILayout.PropertyField(specifyTargetRotationProb);
+            var fixedDurationProp = serializedObject.FindProperty("fixedDuration");
+            EditorGUILayout.PropertyField(fixedDurationProp);
 
-            if (specifyTargetRotationProb.boolValue) {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("targetRotation"));
+            if (fixedDurationProp.boolValue) {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("easeType"));
+
+                var specifyTargetRotationProb = serializedObject.FindProperty("specifyTargetRotation");
+                EditorGUILayout.PropertyField(specifyTargetRotationProb);
+
+                if (specifyTargetRotationProb.boolValue) {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("targetRotation"));
+                }
+                else {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("rotationStep"));
+                }
             }
             else {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("rotationStep"));

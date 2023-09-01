@@ -84,7 +84,7 @@ namespace Glacier.Core.Transforms {
                 _targetObject.localScale = initialScale;
             }
 
-            if (specifyTargetScale) {
+            if (fixedDuration && specifyTargetScale) {
                 StartCoroutine(DoScale(_targetObject, targetScale, duration));
             }
             else {

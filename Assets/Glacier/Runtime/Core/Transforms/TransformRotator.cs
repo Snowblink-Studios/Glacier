@@ -97,7 +97,7 @@ namespace Glacier.Core.Transforms {
                 }
             }
 
-            if (specifyTargetRotation) {
+            if (fixedDuration && specifyTargetRotation) {
                 StartCoroutine(DoRotate(_targetObject, targetRotation, duration));
             }
             else {
