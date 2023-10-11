@@ -1,4 +1,6 @@
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
 
 namespace Glacier.Core.Transforms {
@@ -56,3 +58,4 @@ namespace Glacier.Core.Transforms {
         }
     }
 }
+#endif
